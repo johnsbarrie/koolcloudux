@@ -1,18 +1,43 @@
 import React from "react";
 import { Component } from "react";
 import logo from '../image/kool-cloud-logo.png';
+import { connect } from "react-redux"
+import { Breadcrumb } from 'semantic-ui-react'
+
+const state = state => {
+  return {
+    users : state.users,
+    projects : state.projects,
+    searchFilter: state.searchFilter
+  }
+};
 
 class Project extends Component {
+
+  findProject(projectid) {
+    return this.props.projects.find((project) => {
+      return project.id === projectid;
+    });
+  }
+
   render() {
+    const project = this.findProject(this.props.match.params.id);
+    const title = project ? project.title : 'No Film of this name' 
     return (
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Project Breadcrumb</h1>
         </header>
+        <Breadcrumb>
+          <Breadcrumb.Section href='/'>Home</Breadcrumb.Section>
+          <Breadcrumb.Divider />
+          <Breadcrumb.Section >{title}</Breadcrumb.Section>
+        </Breadcrumb>
+        <h1 >Project :  {title}</h1>
+
       </div>
     );
   }
 }
 
-export default Project
+export default connect(state, null)(Project);

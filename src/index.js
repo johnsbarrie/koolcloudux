@@ -77,7 +77,6 @@ store.dispatch(
             role: 'animator'
           }
         ],
-        status: "private",
         notifications: "permisssion_request" 
       },
       {
@@ -99,7 +98,6 @@ store.dispatch(
             role: 'animator'
           }
         ],
-        status: "private",
         notifications: "permisssion_request" 
       },
       {
@@ -107,7 +105,6 @@ store.dispatch(
         title: "Gigamesh",
         image: faker.image.avatar(),
         ownerid: '1734567567898',
-        status: "Public",
         notifications: "" 
       }
     ]

@@ -1,7 +1,7 @@
 export default {
   FETCH: "ProjectConstants.FETCH",
   FETCHED: "ProjectConstants.FETCHED",
-  VIEW: "ProjectConstant.VIEW",
+  SELECT: "ProjectConstant.SELECT",
   MODIFY: "ProjectConstant.MODIFY",
   CREATED: "ProjectConstant.CREATED",
   SEARCH_FILTER: "ProjectConstant.SEARCH_FILTER",

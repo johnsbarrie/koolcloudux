@@ -2,7 +2,6 @@ import React from "react";
 import { connect } from "react-redux"
 import { Component } from "react";
 import { Table, Button} from 'semantic-ui-react'
-import ProjectConstants from "../constant/ProjectConstants"
 import _ from "lodash";
 
 const state = state => {
@@ -17,10 +16,7 @@ const actions = dispatch => {
   return {
     actions: {
       viewProject : (id) => {
-        dispatch({
-          type: ProjectConstants.SELECT,
-          payload: id
-        })
+        window.location = `/project/${id}`
       }
     }
   }
@@ -35,14 +31,15 @@ const TableRow = ({ viewProjectAction, project, users }) => {
     }).pop();
   }
 
-  return(<Table.Row >
+  return(
+  <Table.Row >
     <Table.Cell >{project.title}</Table.Cell>
     <Table.Cell>{ getUserOwner(project.ownerid) }</Table.Cell>
-    <Table.Cell>{project.status}</Table.Cell>
     <Table.Cell></Table.Cell>
     <Table.Cell><Button size='mini' onClick={ viewProjectAction } >View</Button> | <Button size='mini'>Modify</Button></Table.Cell>
     <Table.Cell positive={Boolean(project.notifications)}>{project.notifications}</Table.Cell>
-  </Table.Row>)
+  </Table.Row>
+  )
 }
 
 class ProjectsTable extends Component {
@@ -75,7 +72,6 @@ class ProjectsTable extends Component {
           <Table.Row>
             <Table.HeaderCell >Project</Table.HeaderCell>
             <Table.HeaderCell>Owner</Table.HeaderCell>
-            <Table.HeaderCell>Status</Table.HeaderCell>
             <Table.HeaderCell>Role</Table.HeaderCell>
             <Table.HeaderCell>Actions</Table.HeaderCell>
             <Table.HeaderCell>Notifications</Table.HeaderCell>

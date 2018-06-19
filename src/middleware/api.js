@@ -5,6 +5,9 @@ const apiMiddleWare = (store) => (next) => (action) => {
     case ProjectConstants.FETCH:
       console.log(ProjectConstants.FETCH);
       break
+    case ProjectConstants.SELECT:
+      console.log('ProjectConstants.SELECT', action.payload)
+      break;   
     default:
   }
   
