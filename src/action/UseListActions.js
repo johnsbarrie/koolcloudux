@@ -1,4 +1,5 @@
-import * as UserConstants from "../constant/UserConstants"
+import UserConstants from "../constant/UserConstants"
+import store from "./store/store"
 
 export function changeUserName(name) {
   return {

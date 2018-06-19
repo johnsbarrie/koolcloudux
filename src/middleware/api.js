@@ -7,7 +7,7 @@ const apiMiddleWare = (store) => (next) => (action) => {
       break
     default:
   }
-
+  
   next(action)
 }
 

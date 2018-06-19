@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from "react-redux"
+import faker from "faker"
 import ProjectConstants from "./constant/ProjectConstants"
 import './index.css';
 import App from './App';
@@ -28,14 +29,26 @@ store.dispatch(
         {
           id: '12345678',
           nickname: 'LuckyLuke',
-          name: 'Luc',
+          firstname: 'Luc',
           surname: 'Camilli'
         }, 
         {
           id: '17345678',
           nickname: 'Nico',
-          name: 'Nicolas',
+          firstname: 'Nicolas',
           surname: 'LeMee'
+        },
+        {
+          id: '1734567567898',
+          nickname: 'Jo',
+          firstname: 'Joanna',
+          surname: 'Jojo'
+        },
+        {
+          id: '1734568887567',
+          nickname: 'MAAARC',
+          firstname: 'Marc',
+          surname: 'Menagere'
         }
     ] 
   }
@@ -47,7 +60,8 @@ store.dispatch(
     payload: [
       {
         id: "3456789",
-        name: "Arrolla",
+        title: "Arrolla",
+        image: faker.image.avatar(),
         ownerid: '345678',
         members: [
           {
@@ -68,7 +82,8 @@ store.dispatch(
       },
       {
         id: "456783",
-        name: "Lazlo",
+        title: "Lazlo",
+        image: faker.image.avatar(),
         ownerid: '17345678',
         members: [
           {
@@ -89,7 +104,8 @@ store.dispatch(
       },
       {
         id: "4567567883",
-        name: "Gigamesh",
+        title: "Gigamesh",
+        image: faker.image.avatar(),
         ownerid: '1734567567898',
         status: "Public",
         notifications: "" 
@@ -101,7 +117,12 @@ store.dispatch(
 store.dispatch(
   { 
     type: "USER.ADD", 
-    payload: { nickname: 'madeupshite' }
+    payload: {
+      id: '17345678567',
+      nickname: 'Joccy',
+      name: 'Jocelyn',
+      surname: 'Barrie'
+    }
   }
 );
 
@@ -111,18 +132,17 @@ setTimeout(()=>{
     { 
       type: ProjectConstants.CREATED, 
       payload: {
-        id: "45675sss67883",
-        name: "Fire Waltz",
-        ownerid: '1734567678567898',
-        status: "Public",
+        id: "4567567883",
+        title: "Fire Waltz",
+        image: faker.image.avatar(),
+        ownerid: '1734568887567',
+        status: "public",
         notifications: "" 
       }
     }
   );
   
-
-  console.log("setTimeout");
-}, 3000);
+}, 10000);
 
   
 

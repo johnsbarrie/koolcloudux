@@ -6,7 +6,6 @@ const projectsReducer = function (projects=[], action) {
       projects = action.payload
       break;
     case ProjectsConstants.CREATED:
-      console.log(action.payload)
       projects = [...projects, action.payload]  
       break;
     default:

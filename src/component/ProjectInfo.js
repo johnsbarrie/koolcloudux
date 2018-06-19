@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux"
 import { Component } from "react";
+import {  Loader,    } from 'semantic-ui-react'
 
 const state = state => {
   return {
@@ -9,10 +10,9 @@ const state = state => {
 };
 
 class ProjectInfo extends Component {
-
   render () {
     return (
-      <div>dood</div>
+      <Loader >Loading</Loader>
     )
   }
 }
