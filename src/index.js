@@ -1,24 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from "react-redux"
-import faker from "faker"
-import ProjectConstants from "./constant/ProjectConstants"
+import UserConstants from "./constant/user"
 import './index.css';
-import App from './App';
+import App from './app';
 import registerServiceWorker from './registerServiceWorker';
 import store from "./store/store"
+import fetchProjects  from './thunk/fetch-project'
+import createProjects  from './thunk/create-project'
 
 ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
 registerServiceWorker();
 
-store.dispatch({
-  type: ProjectConstants.FETCH
-});
-  
+store.dispatch(fetchProjects);
+store.dispatch(createProjects)
 
 store.dispatch(
   { 
-    type: "USERS.SETUP", 
+    type: UserConstants.SET_UP,
     payload: [
       {
           id: '345678',
@@ -54,66 +53,11 @@ store.dispatch(
   }
 );
 
-store.dispatch(
-  { 
-    type: ProjectConstants.FETCHED,
-    payload: [
-      {
-        id: "3456789",
-        title: "Arrolla",
-        image: faker.image.avatar(),
-        ownerid: '345678',
-        members: [
-          {
-            userid: '12345678',
-            role: 'producer'
-          },
-          {
-            userid: '12345678',
-            role: 'qa'
-          },
-          {
-            userid: '12345678',
-            role: 'animator'
-          }
-        ],
-        notifications: "permisssion_request" 
-      },
-      {
-        id: "456783",
-        title: "Lazlo",
-        image: faker.image.avatar(),
-        ownerid: '17345678',
-        members: [
-          {
-            userid: '12345678',
-            role: 'producer'
-          },
-          {
-            userid: '12345678',
-            role: 'qa'
-          },
-          {
-            userid: '12345678',
-            role: 'animator'
-          }
-        ],
-        notifications: "permisssion_request" 
-      },
-      {
-        id: "4567567883",
-        title: "Gigamesh",
-        image: faker.image.avatar(),
-        ownerid: '1734567567898',
-        notifications: "" 
-      }
-    ]
-  }
-);
+
 
 store.dispatch(
   { 
-    type: "USER.ADD", 
+    type: UserConstants.ADD, 
     payload: {
       id: '17345678567',
       nickname: 'Joccy',
@@ -123,23 +67,6 @@ store.dispatch(
   }
 );
 
-setTimeout(()=>{
-
-  store.dispatch(
-    { 
-      type: ProjectConstants.CREATED, 
-      payload: {
-        id: "4567567883",
-        title: "Fire Waltz",
-        image: faker.image.avatar(),
-        ownerid: '1734568887567',
-        status: "public",
-        notifications: "" 
-      }
-    }
-  );
-  
-}, 10000);
 
   
 

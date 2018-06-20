@@ -1,7 +1,6 @@
 import { combineReducers } from "redux"
-import projects from "./projectsReducer"
-import users from "./usersReducer"
-import searchFilter from "./searchFilterReducer"
+import { projects, searchFilter } from "./projects-reducer"
+import users from "./users-reducer"
 
 export default combineReducers({ 
   users,

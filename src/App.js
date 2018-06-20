@@ -10,7 +10,7 @@ import NotFound from './routes/NotFound'
 import './App.css';
 
 const loggedIn = () => {
-  return false;
+  return true;
 }
 
 const loginSwitch = () => (

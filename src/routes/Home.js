@@ -1,9 +1,9 @@
 import React from "react";
 import { Component } from "react";
 import logo from '../image/kool-cloud-logo.png';
-import ProjectsTable from "../component/ProjectsTable"
-import ProjectInfo from "../component/ProjectInfo"
-import ProjectSearch from "../component/ProjectSearch"
+import ProjectsTable from "../component/projects-table"
+import ProjectInfo from "../component/project-info"
+import ProjectSearch from "../component/project-search"
 
 class Home extends Component {
   render() {

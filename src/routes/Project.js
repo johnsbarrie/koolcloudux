@@ -4,14 +4,6 @@ import logo from '../image/kool-cloud-logo.png';
 import { connect } from "react-redux"
 import { Breadcrumb } from 'semantic-ui-react'
 
-const state = state => {
-  return {
-    users : state.users,
-    projects : state.projects,
-    searchFilter: state.searchFilter
-  }
-};
-
 class Project extends Component {
 
   findProject(projectid) {
@@ -33,11 +25,17 @@ class Project extends Component {
           <Breadcrumb.Divider />
           <Breadcrumb.Section >{title}</Breadcrumb.Section>
         </Breadcrumb>
-        <h1 >Project :  {title}</h1>
-
+        <h1 >Project : {title}</h1>
       </div>
     );
   }
 }
 
-export default connect(state, null)(Project);
+export default connect(
+  state => {
+  return {
+    users : state.users,
+    projects : state.projects,
+    searchFilter: state.searchFilter
+  }
+}, null)(Project);

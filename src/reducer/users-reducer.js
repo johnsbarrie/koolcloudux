@@ -1,9 +1,11 @@
+import UserConstants from "../constant/user"
+
 const usersReducer = function (state=[], action) {
   switch(action.type) {
-    case 'USERS.SETUP':
+    case UserConstants.SET_UP:
       state = [...action.payload];
       break
-    case 'USER.ADD':
+    case UserConstants.ADD:
       state = [...state, action.payload];
       break
     default:

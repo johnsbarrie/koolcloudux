@@ -1,9 +1,12 @@
 import { applyMiddleware } from "redux"
-//import { createLogger } from 'redux-logger'
-
+import thunk from 'redux-thunk';
+// import { createLogger } from 'redux-logger'
 import apiMiddleware from "./api"
 
 const errorMiddleWare = (store) => (next) => (action) => {
+  if(!action.type) {
+    throw new Error("action.type cannot be undefined");
+  }
   try {
     next(action);
   } catch (e) {
@@ -11,4 +14,4 @@ const errorMiddleWare = (store) => (next) => (action) => {
   }
 }
 
-export default applyMiddleware(apiMiddleware, errorMiddleWare);
+export default applyMiddleware(thunk, apiMiddleware, errorMiddleWare);

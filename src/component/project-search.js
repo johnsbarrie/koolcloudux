@@ -3,7 +3,7 @@ import { connect } from "react-redux"
 import { Component } from "react";
 import _ from "lodash";
 import {  Search  } from 'semantic-ui-react'
-import ProjectConstants from "../constant/ProjectConstants"
+import ProjectConstants from "../constant/project"
 
 const state = state => {
   return {
