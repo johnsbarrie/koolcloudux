@@ -3,6 +3,7 @@ import faker from "faker"
 
 export default function (dispatch, getState) {
   dispatch({ type: ProjectConstants.FETCH });
+  
   setTimeout(() => {
     dispatch(
       { 
