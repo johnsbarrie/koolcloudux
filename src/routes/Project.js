@@ -21,7 +21,7 @@ class Project extends Component {
           <img src={logo} className="App-logo" alt="logo" />
         </header>
         <Breadcrumb>
-          <Breadcrumb.Section href='/'>Home</Breadcrumb.Section>
+          <Breadcrumb.Section href='#/'>Home</Breadcrumb.Section>
           <Breadcrumb.Divider />
           <Breadcrumb.Section >{title}</Breadcrumb.Section>
         </Breadcrumb>

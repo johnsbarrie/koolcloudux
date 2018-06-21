@@ -1,12 +1,13 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
+import { HashRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 import { Container } from 'semantic-ui-react'
-import Home from './routes/Home'
-import Project from './routes/Project'
-import Signin from './routes/Signin'
-import Signup from './routes/Signup'
+import FadeIn from 'react-fade-in';
+import Home from './routes/home'
+import Project from './routes/project'
+import Signin from './routes/signin'
+import Signup from './routes/signup'
 
-import NotFound from './routes/NotFound'
+import NotFound from './routes/not-found'
 import './App.css';
 
 const loggedIn = () => {
@@ -15,7 +16,9 @@ const loggedIn = () => {
 
 const loginSwitch = () => (
   loggedIn() ? (
-    <Home/>
+    <FadeIn transitionDuration='500'>
+      <Home/>
+    </FadeIn>
   ) : (
     <Redirect to="/signin"/>
   )

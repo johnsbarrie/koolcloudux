@@ -1,26 +1,9 @@
 import React from "react";
 import { connect } from "react-redux"
 import { Component } from "react";
+import FadeIn from 'react-fade-in';
 import { Table, Button} from 'semantic-ui-react'
 import _ from "lodash";
-
-const state = state => {
-  return {
-    users : state.users,
-    projects : state.projects,
-    searchFilter: state.searchFilter
-  }
-};
-
-const actions = dispatch => {
-  return {
-    actions: {
-      viewProject : (id) => {
-        window.location = `/project/${id}`
-      }
-    }
-  }
-};
 
 const TableRow = ({ viewProjectAction, project, users }) => {
   const getUserOwner = (ownerid) => {
@@ -32,13 +15,13 @@ const TableRow = ({ viewProjectAction, project, users }) => {
   }
 
   return(
-  <Table.Row >
-    <Table.Cell >{project.title}</Table.Cell>
-    <Table.Cell>{ getUserOwner(project.ownerid) }</Table.Cell>
-    <Table.Cell></Table.Cell>
-    <Table.Cell><Button size='mini' onClick={ viewProjectAction } >View</Button> | <Button size='mini'>Modify</Button></Table.Cell>
-    <Table.Cell positive={Boolean(project.notifications)}>{project.notifications}</Table.Cell>
-  </Table.Row>
+      <Table.Row >
+        <Table.Cell ><FadeIn>{project.title}</FadeIn></Table.Cell>
+        <Table.Cell><FadeIn>{ getUserOwner(project.ownerid) }</FadeIn></Table.Cell>
+        <Table.Cell></Table.Cell>
+        <Table.Cell><Button size='mini' onClick={ viewProjectAction } >View</Button> | <Button size='mini'>Modify</Button></Table.Cell>
+        <Table.Cell positive={Boolean(project.notifications)}><FadeIn>{project.notifications}</FadeIn></Table.Cell>
+      </Table.Row>
   )
 }
 
@@ -54,12 +37,14 @@ class ProjectsTable extends Component {
     const filteredProjects = this.filterProjects(projects, searchFilter)
     return (filteredProjects) ? filteredProjects.map((project, index) => {
       return  (
+        
         <TableRow 
           viewProjectAction={ () => { this.props.actions.viewProject(project.id); } }
           project={ project }
           users={ this.props.projects }
           key={ index }
         />
+        
       )
     }) : null;
   }
@@ -91,5 +76,22 @@ class ProjectsTable extends Component {
   }
 }
 
-export default connect(state, actions)(ProjectsTable);
+export default connect(
+  state => {
+    return {
+      users : state.users,
+      projects : state.projects,
+      searchFilter: state.searchFilter
+    }
+  }, 
+  dispatch => {
+    return {
+      actions: {
+        viewProject : (id) => {
+          window.location = `#/project/${id}`
+        }
+      }
+    }
+  }
+)(ProjectsTable);
 
