@@ -8,7 +8,7 @@ import Signin from './routes/signin'
 import Signup from './routes/signup'
 
 import NotFound from './routes/not-found'
-import './App.css';
+import './app.css';
 
 const loggedIn = () => {
   return true;
